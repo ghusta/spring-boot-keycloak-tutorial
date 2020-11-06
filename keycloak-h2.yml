@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  keycloak:
+    image: jboss/keycloak:11.0.2
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      DB_VENDOR: h2
+      DB_DATABASE: keycloak
+      KEYCLOAK_IMPORT: /tmp/springdemo.json
+    ports:
+      - 8189:8080
+    volumes:
+    - ./springdemo.json:/tmp/springdemo.json
